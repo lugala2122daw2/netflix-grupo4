@@ -1,5 +1,7 @@
 package com.netflix.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 import javax.persistence.*;
@@ -14,6 +16,8 @@ public class Actor {
     int id;
     @NotNull
     String name;
+
+    @JsonIgnore
 
     @ManyToMany(mappedBy = "actor")
     private List<Title> title;

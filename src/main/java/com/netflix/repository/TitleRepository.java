@@ -16,17 +16,17 @@ public interface TitleRepository extends JpaRepository<Title, Integer>{
 
     List<Title> findTitlesByNameContains(@Param("q") String name);
 
-    List<Title> findTitleByDirectorName(@Param("q") String director);
+    List<Title> findTitleByDirectorNameContains(@Param("q") String director);
 
-    List<Title> findTitleByActorName(@Param("q") String actor);
+    List<Title> findTitleByActorNameContains(@Param("q") String actor);
 
-    List<Title> findTitleByCategoryName(@Param("q") Integer categoryId);
+    List<Title> findTitleByCategoryNameContains(@Param("q") Integer categoryId);
 
     List<Title> findTitleByNameContains(@Param("q") String name, Pageable pageable);
 
     List<Title> findTitleByReleaseYear(@Param("q") Integer year, Pageable pageable);
 
-    List<Title> findTitleByDescription(@Param("q") String description, Pageable pageable);
+    List<Title> findTitleByDescriptionContains(@Param("q") String description, Pageable pageable);
 
     @Query(value = "SELECT * FROM title  t ORDER BY t.user_rating DESC", nativeQuery = true)
     List<Title> findTopRating(PageRequest pageRequest);
