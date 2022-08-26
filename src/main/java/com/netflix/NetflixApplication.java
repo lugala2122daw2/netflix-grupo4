@@ -13,11 +13,11 @@ public class NetflixApplication {
 		SpringApplication.run(NetflixApplication.class, args);
 	}
 
-	@Bean
+	/*@Bean
 	public ServletRegistrationBean dispatcherRegistration(DispatcherServlet dispatcherServlet)     {
 		ServletRegistrationBean reg = new ServletRegistrationBean(dispatcherServlet);
 		reg.addUrlMappings("/api/*");
 
 		return reg;
-	}
+	}*/
 }
