@@ -89,10 +89,10 @@ public class Title {
         this.numRatings = numRatings;
     }
 
-    public TItle() {
+    public Title() {
     }
 
-    public TItle(int id, String name, String dateAdded, String releaseYear, String rating, String duration,
+    public Title(int id, String name, String dateAdded, String releaseYear, String rating, String duration,
             String description, float userRating, int numRatings) {
         this.id = id;
         this.name = name;
