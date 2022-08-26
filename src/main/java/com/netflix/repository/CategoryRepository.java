@@ -12,10 +12,9 @@ import java.util.List;
 
 @RepositoryRestResource(collectionResourceRel = "category", path = "category")
 public interface CategoryRepository extends JpaRepository<Category, Integer> {
-<<<<<<< HEAD
-=======
+
 
     List<Category> findByNameContains(@Param("q") String name);
 
->>>>>>> b94c14c (Categories search)
+
 }
