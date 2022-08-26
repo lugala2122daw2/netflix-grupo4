@@ -1,5 +1,7 @@
 package com.netflix.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 import javax.persistence.*;
@@ -15,6 +17,7 @@ public class Category {
     @NotNull
     String name;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "category")
     List<Title> title;
 
