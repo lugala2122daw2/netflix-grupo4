@@ -9,7 +9,17 @@ public class Director {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     String name;
-    
+
+    Title title;
+
+    public Title getTitle() {
+        return title;
+    }
+
+    public void setTitle(Title title) {
+        this.title = title;
+    }
+
     public int getId() {
         return id;
     }
@@ -29,9 +39,10 @@ public class Director {
     public Director() {
     }
 
-    public Director(int id, String name) {
+    public Director(int id, String name, Title title) {
         this.id = id;
         this.name = name;
+        this.title = title;
     }
 
 }

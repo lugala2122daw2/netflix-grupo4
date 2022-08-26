@@ -10,6 +10,16 @@ public class Category {
     int id;
     String name;
 
+    Title title;
+
+    public Title getTitle() {
+        return title;
+    }
+
+    public void setTitle(Title title) {
+        this.title = title;
+    }
+
     public int getId() {
         return id;
     }
@@ -29,9 +39,10 @@ public class Category {
     public Category() {
     }
 
-    public Category(int id, String name) {
+    public Category(int id, String name, Title title) {
         this.id = id;
         this.name = name;
+        this.title = title;
     }
 
 }

@@ -9,13 +9,16 @@ public class Actor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     String name;
+
+    Title title;
     
     public Actor() {
     }
 
-    public Actor(int id, String name) {
+    public Actor(int id, String name, Title title) {
         this.id = id;
         this.name = name;
+        this.title = title;
     }
     
     public int getId() {
@@ -32,6 +35,14 @@ public class Actor {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Title getTitle() {
+        return title;
+    }
+
+    public void setTitle(Title title) {
+        this.title = title;
     }
 
 }

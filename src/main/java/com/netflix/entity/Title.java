@@ -17,6 +17,34 @@ public class Title {
     float userRating;
     int numRatings;
 
+    Director director;
+    Actor actor;
+    Category category;
+
+    public Director getDirector() {
+        return director;
+    }
+
+    public void setDirector(Director director) {
+        this.director = director;
+    }
+
+    public Actor getActor() {
+        return actor;
+    }
+
+    public void setActor(Actor actor) {
+        this.actor = actor;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     public int getId() {
         return id;
     }
@@ -93,7 +121,7 @@ public class Title {
     }
 
     public Title(int id, String name, String dateAdded, String releaseYear, String rating, String duration,
-            String description, float userRating, int numRatings) {
+            String description, float userRating, int numRatings, Director director, Actor actor, Category category) {
         this.id = id;
         this.name = name;
         this.dateAdded = dateAdded;
@@ -103,6 +131,9 @@ public class Title {
         this.description = description;
         this.userRating = userRating;
         this.numRatings = numRatings;
+        this.director = director;
+        this.actor = actor;
+        this.category = category;
     }
 
 }
