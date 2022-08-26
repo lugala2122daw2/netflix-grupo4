@@ -3,7 +3,7 @@ package com.netflix.entity;
 import javax.persistence.*;
 
 @Entity
-public class TItle {
+public class Title {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
