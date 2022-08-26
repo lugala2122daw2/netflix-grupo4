@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
+import org.hibernate.validator.constraints.Range;
+
 import com.netflix.annotation.YearValidation;
 
 @Entity
@@ -28,8 +30,10 @@ public class Title {
     @NotNull
     String description;
     @NotNull
+    @Range(min=0, max=10)
     float userRating;
     @NotNull
+    @Range(min=0)
     int numRatings;
 
     @ManyToMany
