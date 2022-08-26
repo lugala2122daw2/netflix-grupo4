@@ -16,7 +16,7 @@ public class Actor {
     String name;
 
     @ManyToMany(mappedBy = "actor")
-    List<Title> title;
+    private List<Title> title;
     
     public Actor(int id, @NotNull String name, List<Title> title) {
         this.id = id;

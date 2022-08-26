@@ -1,7 +1,11 @@
 package com.netflix.entity;
 
+import java.util.List;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
+
+import com.netflix.annotation.YearValidation;
 
 @Entity
 @Table(name = "title")
@@ -15,6 +19,7 @@ public class Title {
     @NotNull
     String dateAdded;
     @NotNull
+    @YearValidation(minYear = "1900")
     String releaseYear;
     @NotNull
     String rating;
@@ -29,57 +34,30 @@ public class Title {
 
     @ManyToMany
     @JoinTable(name = "title_director",
-        joinColumns = {
-            @JoinColumn(name = "title_id", referencedColumnName = "id",
-                nullable = false, updatable = false),
-            @JoinColumn(name = "director_id", referencedColumnName = "id",
-            nullable = false, updatable = false)
-        })
-    Director director;
+        joinColumns = 
+            @JoinColumn(name = "title_id",nullable = false),
+        inverseJoinColumns = 
+            @JoinColumn(name = "director_id",nullable = false)
+        )
+    List<Director> director;
 
     @ManyToMany
     @JoinTable(name = "title_actor",
-        joinColumns = {
-            @JoinColumn(name = "title_id", referencedColumnName = "id",
-                nullable = false, updatable = false),
-            @JoinColumn(name = "actor_id", referencedColumnName = "id",
-            nullable = false, updatable = false)
-        })
-    Actor actor;
+        joinColumns = 
+            @JoinColumn(name = "title_id",nullable = false),
+        inverseJoinColumns = 
+            @JoinColumn(name = "actor_id",nullable = false)
+        )
+    List<Actor> actor;
 
     @ManyToMany
     @JoinTable(name = "title_category",
-        joinColumns = {
-            @JoinColumn(name = "title_id", referencedColumnName = "id",
-                nullable = false, updatable = false),
-            @JoinColumn(name = "category_id", referencedColumnName = "id",
-            nullable = false, updatable = false)
-        })
-    Category category;
-
-    public Director getDirector() {
-        return director;
-    }
-
-    public void setDirector(Director director) {
-        this.director = director;
-    }
-
-    public Actor getActor() {
-        return actor;
-    }
-
-    public void setActor(Actor actor) {
-        this.actor = actor;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
+        joinColumns = 
+            @JoinColumn(name = "title_id",nullable = false),
+        inverseJoinColumns = 
+            @JoinColumn(name = "category_id",nullable = false)
+        )
+    List<Category> category;
 
     public int getId() {
         return id;
@@ -157,7 +135,7 @@ public class Title {
     }
 
     public Title(int id, String name, String dateAdded, String releaseYear, String rating, String duration,
-            String description, float userRating, int numRatings, Director director, Actor actor, Category category) {
+            String description, float userRating, int numRatings, List<Director> director, List<Actor> actor, List<Category> category) {
         this.id = id;
         this.name = name;
         this.dateAdded = dateAdded;
@@ -169,6 +147,30 @@ public class Title {
         this.numRatings = numRatings;
         this.director = director;
         this.actor = actor;
+        this.category = category;
+    }
+
+    public List<Director> getDirector() {
+        return director;
+    }
+
+    public void setDirector(List<Director> director) {
+        this.director = director;
+    }
+
+    public List<Actor> getActor() {
+        return actor;
+    }
+
+    public void setActor(List<Actor> actor) {
+        this.actor = actor;
+    }
+
+    public List<Category> getCategory() {
+        return category;
+    }
+
+    public void setCategory(List<Category> category) {
         this.category = category;
     }
 

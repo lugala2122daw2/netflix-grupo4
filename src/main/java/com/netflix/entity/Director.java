@@ -16,7 +16,7 @@ public class Director {
     String name;
 
     @ManyToMany(mappedBy = "director")
-    List<Title> title;
+    private List<Title> title;
 
     public int getId() {
         return id;
