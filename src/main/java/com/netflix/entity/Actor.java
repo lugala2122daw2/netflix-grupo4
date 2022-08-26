@@ -1,24 +1,30 @@
 package com.netflix.entity;
 
+import java.util.List;
+
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 @Entity
+@Table(name = "actor")
 public class Actor {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
+    @NotNull
     String name;
 
-    Title title;
+    @ManyToMany(mappedBy = "actor")
+    List<Title> title;
     
-    public Actor() {
-    }
-
-    public Actor(int id, String name, Title title) {
+    public Actor(int id, @NotNull String name, List<Title> title) {
         this.id = id;
         this.name = name;
         this.title = title;
+    }
+
+    public Actor() {
     }
     
     public int getId() {
@@ -37,12 +43,14 @@ public class Actor {
         this.name = name;
     }
 
-    public Title getTitle() {
+    public List<Title> getTitle() {
         return title;
     }
 
-    public void setTitle(Title title) {
+    public void setTitle(List<Title> title) {
         this.title = title;
     }
+
+    
 
 }

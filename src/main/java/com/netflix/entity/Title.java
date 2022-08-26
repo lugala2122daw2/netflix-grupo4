@@ -1,24 +1,60 @@
 package com.netflix.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 @Entity
+@Table(name = "title")
 public class Title {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
+    @NotNull
     String name;
+    @NotNull
     String dateAdded;
+    @NotNull
     String releaseYear;
+    @NotNull
     String rating;
+    @NotNull
     String duration;
+    @NotNull
     String description;
+    @NotNull
     float userRating;
+    @NotNull
     int numRatings;
 
+    @ManyToMany
+    @JoinTable(name = "title_director",
+        joinColumns = {
+            @JoinColumn(name = "title_id", referencedColumnName = "id",
+                nullable = false, updatable = false),
+            @JoinColumn(name = "director_id", referencedColumnName = "id",
+            nullable = false, updatable = false)
+        })
     Director director;
+
+    @ManyToMany
+    @JoinTable(name = "title_actor",
+        joinColumns = {
+            @JoinColumn(name = "title_id", referencedColumnName = "id",
+                nullable = false, updatable = false),
+            @JoinColumn(name = "actor_id", referencedColumnName = "id",
+            nullable = false, updatable = false)
+        })
     Actor actor;
+
+    @ManyToMany
+    @JoinTable(name = "title_category",
+        joinColumns = {
+            @JoinColumn(name = "title_id", referencedColumnName = "id",
+                nullable = false, updatable = false),
+            @JoinColumn(name = "category_id", referencedColumnName = "id",
+            nullable = false, updatable = false)
+        })
     Category category;
 
     public Director getDirector() {
